@@ -1,0 +1,50 @@
+@import '../../variables.scss';
+
+.pagination-container {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+
+    button {
+        display: inline-block;
+        min-width: 32px;
+        padding: 5px 10px;
+        margin-left: 6px;
+        margin-right: 6px;
+        font-style: normal;
+        line-height: 20px;
+        color: $dark;
+        background: transparent;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        user-select: none;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: border-color .2s cubic-bezier(.3, 0, .5, 1);
+
+        &:hover {
+            border: 1px solid $light-grey;
+            border-radius: 8px;
+        }
+
+        &.current {
+            background: $blue;
+            color: white;
+
+            &:hover {
+                border: 1px solid $blue;
+            }
+        }
+
+        &.disabled {
+            color: $dark-grey;
+            border: none;
+        }
+    }
+}
