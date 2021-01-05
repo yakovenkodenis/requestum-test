@@ -1,0 +1,71 @@
+@import '../../variables.scss';
+
+.dropdown {
+    min-width: 160px;
+    cursor: pointer;
+    position: relative;
+    color: $dark;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 14px;
+        right: 8px;
+        border: 8px solid;
+        border-color: $dark transparent transparent transparent;
+    }
+
+    .default-option {
+        background: white;
+        height: 28px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border: 1px solid $dark-grey;
+        border-right: none;
+        padding: 16px 16px 16px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.active .default-option {
+        border-bottom-left-radius: 0;
+    }
+
+    ul {
+        top: 33px;
+        left: 1px;
+        width: calc(100% - 1px);
+        margin: auto;
+        position: absolute;
+        list-style: none;
+        background: white;
+        visibility: hidden;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
+
+        li {
+            padding: 8px;
+            border-top: 1px solid $grey;
+
+            &:last-child {
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            &:hover {
+                background: $blue;
+                color: white;
+            }
+        }
+
+
+    }
+
+    &.active ul {
+        visibility: visible;
+    }
+}
