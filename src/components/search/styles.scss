@@ -1,0 +1,151 @@
+@import '../../variables.scss';
+
+.search {
+    width: 35%;
+    transition: all 0.2s ease-out;
+
+    .autocomplete {
+        visibility: hidden;
+    }
+
+    &:focus-within {
+        width: 50%;
+
+        input {
+            background: $light-grey-text;
+            color: $dark;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .search-key-slash {
+            visibility: hidden;
+        }
+
+        .search-form .dropdown {
+            display: none;
+        }
+
+        .autocomplete {
+            visibility: visible;
+        }
+    }
+}
+
+.search-form {
+    display: flex;
+    position: relative;
+    min-width: 300px;
+}
+
+.search-field {
+    position: relative;
+    width: 100%;
+
+    input {
+        width: 100%;
+        outline: none;
+        border: 1px solid $dark-grey;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background: transparent;
+        color: $light-grey-text;
+        padding: 16px;
+        height: 28px;
+        font-size: 1rem;
+
+        &::placeholder {
+            color: $light-grey;
+        }
+    }
+
+    .search-key-slash {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 5px;
+        right: 6px;
+    }
+
+    &:focus-within {
+        input {
+            width: 100%;
+
+            &::placeholder {
+                color: $dark;
+            }
+        }
+    }
+}
+
+.autocomplete {
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    top: 33px;
+
+    ul {
+        list-style: none;
+        width: calc(100% - 2px);
+        margin: auto;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        li {
+            display: flex;
+            align-items: center;
+            background: white;
+            color: $dark;
+            height: 28px;
+            padding: 24px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid $grey;
+
+            &:hover {
+                background: $blue;
+
+                .repo-search-icon,
+                .search-icon {
+                    fill: white;
+                }
+
+                .autocomplete__repo-name {
+                    color: white;
+                }
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                font-size: 1rem;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .autocomplete__repo-name {
+        margin-left: 10px;
+        color: $dark;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .search {
+        width: 80%;
+    }
+
+    .search:focus-within {
+        width: 80%;
+    }
+
+    .search-form .dropdown {
+        width: 60%;
+    }
+}

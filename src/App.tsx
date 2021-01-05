@@ -1,5 +1,15 @@
+import { Footer } from './components/footer';
+import { Header } from './components/header';
+import { ReposList } from './components/repos';
+
 function App() {
-  return null;
+  return (
+    <>
+      <Header />
+      <ReposList />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
