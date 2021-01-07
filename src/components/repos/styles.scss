@@ -66,6 +66,7 @@
 .repo-meta {
     display: flex;
     margin-top: 8px;
+    align-items: center;
 
     &>* {
         margin-right: 24px;
@@ -134,8 +135,36 @@
     border-top: 1px solid #e1e4e8;
 }
 
+.text-big {
+    font-size: 32px;
+    padding: 24px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.welcome-text {
+    margin-top: 64px;
+    line-height: $line-height * 2;
+}
+
+.truncate-overflow {
+    max-height: calc($line-height * 2);
+    overflow: hidden;
+}
+
 @media only screen and (max-width: 600px) {
     .repo-list-item {
         width: 100%;
     }
+
+    .repo-stargazers svg {
+        margin-bottom: 2px;
+    }
+
+    .repo-last-updated-at {
+        display: none;
+    }
+
 }
