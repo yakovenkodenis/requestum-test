@@ -85,9 +85,6 @@ export class GithubApi {
       }));
       const total_count = +data.total_count;
 
-      console.log(
-        this.paginationLinkParser.parsePaginationLink(response.headers.link)
-      );
       const {
         lastPage,
         nextPage,
@@ -111,7 +108,7 @@ export class GithubApi {
     page = 1,
   }: Query): Promise<GithubSearchResponse<Organization>> {
     const response = await this.client.get<GithubSearchResponse<Organization>>(
-      `https://api.github.com/search/users?q=${query}+type:org&page=${page}&per_page=${this.PER_PAGE}`
+      `/search/users?q=${query}+type:org&page=${page}&per_page=${this.PER_PAGE}`
     );
 
     const { data } = response;
@@ -164,7 +161,7 @@ export class GithubApi {
     login: string
   ): Promise<GithubOrganizationDetailsResponse> {
     const response = await this.client.get<GithubOrganizationDetailsResponse>(
-      `https://api.github.com/orgs/${login}`
+      `/orgs/${login}`
     );
     const { data } = response;
     const organization: GithubOrganizationDetailsResponse = {
