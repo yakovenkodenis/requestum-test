@@ -30,6 +30,9 @@ const ListComponentsMap = {
 export const ReposList: FC = () => {
   const isPending = useSelector((state: RootState) => state.ui.pending);
   const data = useSelector((state: RootState) => state.data);
+  const searchCriteria = useSelector(
+    (state: RootState) => state.search.criteria
+  );
 
   let items = null;
   let totalResultsCount = null;
@@ -47,24 +50,14 @@ export const ReposList: FC = () => {
     }`;
   }
 
-  // if (data && data.type === 'repository') {
-  //   items = data.items.map((item) => (
-  //     <RepoListItem key={item.id} repository={item} />
-  //   ));
-  // }
-
-  // if (data && data.type === 'organization') {
-  //   items = data.items.forEach((item) => {
-  //     console.log(item);
-  //   });
-  // }
-
   return (
     <main className="container">
       {isPending ? (
         <Spinner />
       ) : (
-        data && <h3 className="search-results-title">{totalResultsCount}</h3>
+        data.meta.lastPage > 0 && (
+          <h3 className="search-results-title">{totalResultsCount}</h3>
+        )
       )}
 
       <ul className="repos-list">
@@ -73,11 +66,17 @@ export const ReposList: FC = () => {
         ) : items && items.length > 0 ? (
           <>{items}</>
         ) : (
-          <div>Let's search...</div>
+          data.meta.lastPage === 0 && (
+            <div className="text-big text-center welcome-text">
+              Let's search some GitHub {searchCriteria.toLowerCase()}
+            </div>
+          )
         )}
       </ul>
 
-      <Pagination length={data.meta.lastPage} />
+      {data.meta.lastPage > 0 && data.total_count > 0 && (
+        <Pagination length={data.meta.lastPage} />
+      )}
     </main>
   );
 };
