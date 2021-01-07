@@ -38,6 +38,7 @@
 .repo-description {
     padding-top: 8px;
     padding-bottom: 8px;
+    color: $darker-grey;
 }
 
 .repo-icon {
@@ -91,6 +92,7 @@
     svg {
         fill: $darker-grey;
         transform: scale(0.95);
+        margin-bottom: -2px;
     }
 
     &:hover svg {
@@ -100,6 +102,36 @@
     &:hover span {
         color: $blue;
     }
+}
+
+.organization-avatar {
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+}
+
+.organization-name {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+
+.organization-info {
+    margin-left: 12px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.organization-list-item {
+    display: flex;
+    align-items: center;
+    padding: 24px 16px;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+
+    border-top: 1px solid #e1e4e8;
 }
 
 @media only screen and (max-width: 600px) {
