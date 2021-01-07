@@ -3,15 +3,20 @@ import React, { FC } from 'react';
 interface IProps {
   icon?: React.ReactNode;
   value: string;
+  onSelectItem: (value: string) => void;
 }
 
-export const HistoryItem: FC<IProps> = ({ icon, value }) => {
+export const HistoryItem: FC<IProps> = ({ icon, value, onSelectItem }) => {
   return (
-    <li>
-      <a href="/">
+    <li
+      onMouseDown={() => {
+        onSelectItem(value);
+      }}
+    >
+      <div>
         {icon}
         <div className="autocomplete__repo-name">{value}</div>
-      </a>
+      </div>
     </li>
   );
 };

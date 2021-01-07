@@ -8,6 +8,11 @@
         visibility: hidden;
     }
 
+    .clear-search-icon {
+        // visibility: hidden;
+        display: none;
+    }
+
     &:focus-within {
         width: 50%;
 
@@ -20,7 +25,13 @@
         }
 
         .search-key-slash {
-            visibility: hidden;
+            // visibility: hidden;
+            display: none;
+        }
+
+        .clear-search-icon {
+            // visibility: visible;
+            display: block;
         }
 
         .search-form .dropdown {
@@ -60,12 +71,21 @@
         }
     }
 
-    .search-key-slash {
+    .search-key-slash,
+    .clear-search-icon {
         position: absolute;
         width: 24px;
         height: 24px;
         top: 5px;
         right: 6px;
+    }
+
+    .clear-search-icon {
+        cursor: pointer;
+
+        &:hover {
+            fill: darken($grey, 25%);
+        }
     }
 
     &:focus-within {
@@ -84,6 +104,7 @@
     width: 100%;
     max-width: 100%;
     top: 33px;
+    z-index: 99;
 
     ul {
         list-style: none;
@@ -121,7 +142,7 @@
                 border-bottom-right-radius: 8px;
             }
 
-            a {
+            div {
                 display: flex;
                 align-items: center;
                 font-size: 1rem;
@@ -132,6 +153,7 @@
 
     .autocomplete__repo-name {
         margin-left: 10px;
+        margin-top: -3px;
         color: $dark;
     }
 }
