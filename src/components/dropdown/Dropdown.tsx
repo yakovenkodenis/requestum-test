@@ -32,7 +32,6 @@ export const Dropdown: FC<IProps> = ({ options, defaultOption }) => {
       setIsActive(false);
       dispatch(setSearchCriteria(option));
       dispatch(setCurrentPage(1));
-      console.log(option);
     },
     [dispatch]
   );
