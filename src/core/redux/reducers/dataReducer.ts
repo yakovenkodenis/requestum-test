@@ -10,7 +10,7 @@ import {
 } from '../actions/data/data.actions';
 import { DataActions } from '../actions/data/data.types';
 
-type DataState = {
+export type DataState = {
   total_count: number;
   meta: {
     nextPage: number;
