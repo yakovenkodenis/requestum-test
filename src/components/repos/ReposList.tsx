@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../core/redux/configureStore';
 import { commaNumberFormatter } from '../../core/utils/formatters';
+import { useReposListData } from '../../hooks/useReposListData';
 import { Pagination } from '../pagination';
 import { SkeletonRepo } from '../skeleton/SkeletonRepo';
 import { Spinner } from '../spinner';
@@ -22,29 +23,20 @@ const SkeletonList: FC = () => (
   </>
 );
 
-const ListComponentsMap = {
+const listComponentsMap = {
   repository: RepoListItem,
   organization: OrganizationListItem,
 };
 
 export const ReposList: FC = () => {
-  const isPending = useSelector((state: RootState) => state.ui.pending);
-  const data = useSelector((state: RootState) => state.data);
   const searchCriteria = useSelector(
     (state: RootState) => state.search.criteria
   );
 
-  let items = null;
+  const { isPending, items, data } = useReposListData(listComponentsMap);
   let totalResultsCount = null;
 
-  if (data && data.items) {
-    items = data.items.map((item) =>
-      React.createElement(ListComponentsMap[data.type] as FC, {
-        key: item.id,
-        ...item,
-      })
-    );
-
+  if (items) {
     totalResultsCount = `${commaNumberFormatter(data.total_count)} ${
       data.total_count === 1 ? 'result' : 'results'
     }`;

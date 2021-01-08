@@ -123,6 +123,12 @@
     flex-direction: column;
 }
 
+.organization-description {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: $darker-grey;
+}
+
 .organization-list-item {
     display: flex;
     align-items: center;
@@ -155,6 +161,11 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .container {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
     .repo-list-item {
         width: 100%;
     }
@@ -167,4 +178,12 @@
         display: none;
     }
 
+    .organization-name {
+        font-size: 1rem;
+    }
+
+    .organization-description {
+        max-height: #{$line-height * 2.3};
+        overflow: hidden;
+    }
 }
