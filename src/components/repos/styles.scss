@@ -146,11 +146,11 @@
 
 .welcome-text {
     margin-top: 64px;
-    line-height: $line-height * 2;
+    line-height: #{$line-height * 2};
 }
 
 .truncate-overflow {
-    max-height: calc($line-height * 2);
+    max-height: #{$line-height * 2};
     overflow: hidden;
 }
 
