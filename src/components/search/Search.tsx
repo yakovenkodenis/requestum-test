@@ -1,14 +1,5 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchOrganizations,
-  fetchRepos,
-} from '../../core/redux/actions/data/data.thunks';
-import {
-  setCurrentSearchTerm,
-  setSearchHistory,
-} from '../../core/redux/actions/search/search.actions';
-import { RootState } from '../../core/redux/configureStore';
+import { ChangeEvent, FC, useRef, useState } from 'react';
+import { useDataFetchOnSearch } from '../../hooks/useDataFetchOnSearch';
 
 import { useDebounce } from '../../hooks/useDebounce';
 import { Dropdown } from '../dropdown';
@@ -20,11 +11,10 @@ const searchCriteria = ['Repositories', 'Organizations'];
 
 export const Search: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const dispatch = useDispatch();
-  const currentSearchCriteria = useSelector(
-    (state: RootState) => state.search.criteria
-  );
+  const debouncedSearchTerm = useDebounce(searchTerm, 700);
   const searchFieldRef = useRef<HTMLInputElement>(null);
+
+  useDataFetchOnSearch(debouncedSearchTerm, searchFieldRef);
 
   const handleSearchTermChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -37,27 +27,6 @@ export const Search: FC = () => {
   const onSelectHistoryItem = (historyItem: string) => {
     setSearchTerm(historyItem);
   };
-
-  const debouncedSearchTerm = useDebounce(searchTerm, 700);
-
-  useEffect(() => {
-    if (debouncedSearchTerm.trim()) {
-      if (currentSearchCriteria === 'Organizations') {
-        dispatch(fetchOrganizations(debouncedSearchTerm));
-      }
-
-      if (currentSearchCriteria === 'Repositories') {
-        dispatch(fetchRepos(debouncedSearchTerm));
-      }
-
-      dispatch(setCurrentSearchTerm(debouncedSearchTerm));
-      dispatch(setSearchHistory(debouncedSearchTerm));
-
-      if (searchFieldRef?.current) {
-        searchFieldRef.current.blur();
-      }
-    }
-  }, [debouncedSearchTerm, currentSearchCriteria, dispatch]);
 
   return (
     <div className="search">
