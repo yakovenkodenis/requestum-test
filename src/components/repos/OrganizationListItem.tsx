@@ -41,7 +41,7 @@ export const OrganizationListItem: FC<IProps> = ({
             <span className="organization-name">{displayName}</span>
           </a>
         </div>
-        <p className="repo-description">{truncatedDescription}</p>
+        <p className="organization-description">{truncatedDescription}</p>
       </div>
     </li>
   );
