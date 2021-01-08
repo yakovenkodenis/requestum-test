@@ -16,7 +16,7 @@ export const HistoryItem: FC<IProps> = ({ icon, value, onSelectItem }) => {
     >
       <div>
         {icon}
-        <div className="autocomplete__repo-name">{value}</div>
+        <div className="autocomplete-repo-name">{value}</div>
       </div>
     </li>
   );
