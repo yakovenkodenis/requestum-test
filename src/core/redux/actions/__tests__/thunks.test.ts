@@ -21,6 +21,11 @@ const initialRootState = {
 };
 
 describe('Test fetchRepos thunk action creator', () => {
+  it('should return a function', () => {
+    const response = fetchRepos('test');
+    expect(typeof response).toBe('function');
+  });
+
   it('expected actions should be dispatched on successful request', () => {
     const store = mockStore(initialRootState as any);
     const expectedActions = [SET_LOADER, REPOS_LOADED, SET_LOADER];
@@ -35,6 +40,11 @@ describe('Test fetchRepos thunk action creator', () => {
 });
 
 describe('Test fetchOrganizations thunk action creator', () => {
+  it('should return a function', () => {
+    const response = fetchOrganizations('test');
+    expect(typeof response).toBe('function');
+  });
+
   it('expected actions should be dispatched on successful request', () => {
     const store = mockStore(initialRootState as any);
     const expectedActions = [SET_LOADER, ORGANIZATIONS_LOADED, SET_LOADER];
