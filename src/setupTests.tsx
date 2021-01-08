@@ -26,6 +26,8 @@ export const mockState = {
 };
 let mockedUseSelector: jest.Mock;
 
+window.scrollTo = jest.fn();
+
 beforeEach(() => {
   mockedUseSelector = mockReactRedux.useSelector as jest.Mock;
 
@@ -36,6 +38,10 @@ beforeEach(() => {
 
 afterEach(() => {
   mockedUseSelector.mockClear();
+});
+
+afterAll(() => {
+  jest.clearAllMocks();
 });
 
 export { mockedUseSelector, mockDispatch };
