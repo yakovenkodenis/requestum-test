@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchOrganizations,
@@ -31,13 +31,16 @@ export const Pagination: FC<IProps> = ({ length }) => {
   const choosePage = useCallback(
     (page: number) => {
       if (page > 0 && page <= length && dataFetcher) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         dispatch(setCurrentPage(page));
         dispatch(dataFetcher(searchTerm, page));
       }
     },
     [dispatch, length, searchTerm, dataFetcher]
   );
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   return (
     <div className="pagination-container">

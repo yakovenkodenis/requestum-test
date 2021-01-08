@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, MouseEvent } from 'react';
+import { ChangeEvent, forwardRef, MouseEvent, TouchEvent } from 'react';
 
 import searchKeyIcon from '../../icons/search-key-slash.svg';
 import { ReactComponent as DismissIcon } from '../../icons/dismiss.svg';
@@ -15,7 +15,9 @@ export const SearchField = forwardRef<HTMLInputElement, IProps>(
     const placeholder = 'Search or jump to...';
 
     const clearSearchField = (
-      e: MouseEvent<SVGSVGElement, globalThis.MouseEvent>
+      e:
+        | MouseEvent<SVGSVGElement, globalThis.MouseEvent>
+        | TouchEvent<SVGSVGElement>
     ) => {
       e.preventDefault();
       clear();
@@ -40,6 +42,7 @@ export const SearchField = forwardRef<HTMLInputElement, IProps>(
           aria-label="clear search field"
           className="clear-search-icon"
           onMouseDown={clearSearchField}
+          onTouchStart={clearSearchField}
         />
       </div>
     );
