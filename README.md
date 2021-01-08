@@ -1,10 +1,14 @@
 # Requestum test task - Github Search App
 
+#### This project is deployed to [GitHub Pages](https://yakovenkodenis.github.io/requestum-test).
+
 To run locally:
-### `yarn install`
-### `yarn start`
+```bash
+  yarn install
+  yarn start
+```
 
 To run tests:
-### `yarn test`
-
-This project is available at [link](https://link).
+```bash
+  yarn test
+```
