@@ -12,6 +12,7 @@ export const HistoryItem: FC<IProps> = ({ icon, value, onSelectItem }) => {
       onMouseDown={() => {
         onSelectItem(value);
       }}
+      data-testid="history-item"
     >
       <div>
         {icon}

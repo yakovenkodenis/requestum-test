@@ -43,7 +43,11 @@ export const Dropdown: FC<IProps> = ({ options, defaultOption }) => {
 
   return (
     <div className={dropDownClassName} ref={dropdownRef}>
-      <div className="default-option" onClick={() => setIsActive(true)}>
+      <div
+        className="default-option"
+        onClick={() => setIsActive(true)}
+        data-testid="dropdown-current-option"
+      >
         {currentOption}
       </div>
       <ul>

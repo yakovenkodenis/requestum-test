@@ -13,7 +13,7 @@ interface IProps {
   length: number;
 }
 
-const createDataFetcher = (searchCriteria: string) => {
+export const createDataFetcher = (searchCriteria: string) => {
   if (searchCriteria === 'Repositories') {
     return fetchRepos;
   } else if (searchCriteria === 'Organizations') {

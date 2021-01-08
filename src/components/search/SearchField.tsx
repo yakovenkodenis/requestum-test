@@ -29,6 +29,7 @@ export const SearchField = forwardRef<HTMLInputElement, IProps>(
           placeholder={placeholder}
           value={searchTerm}
           onChange={onChange}
+          data-testid="search-input"
         />
         <img
           src={searchKeyIcon}
@@ -36,6 +37,7 @@ export const SearchField = forwardRef<HTMLInputElement, IProps>(
           className="search-key-slash"
         />
         <DismissIcon
+          aria-label="clear search field"
           className="clear-search-icon"
           onMouseDown={clearSearchField}
         />
