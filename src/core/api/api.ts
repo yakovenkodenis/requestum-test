@@ -164,6 +164,7 @@ export class GithubApi {
       `/orgs/${login}`
     );
     const { data } = response;
+
     const organization: GithubOrganizationDetailsResponse = {
       id: data.id,
       name: data.name,

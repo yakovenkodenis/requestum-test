@@ -6,7 +6,7 @@ import { SkeletonElement } from './SkeletonElement';
 export const SkeletonRepo: FC = () => {
   return (
     <div className="skeleton-wrapper">
-      <div className="skeleton-article">
+      <div className="skeleton-repo">
         <SkeletonElement type="title" />
         <SkeletonElement type="text" />
         <SkeletonElement type="text" />
